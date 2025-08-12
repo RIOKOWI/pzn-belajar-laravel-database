@@ -71,3 +71,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 contoh di file :
 .env
 database.sql
+
+## DEBUG QUERY
+
+contoh di file :
+AppServiceProvider
