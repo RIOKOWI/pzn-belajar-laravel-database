@@ -81,3 +81,4 @@ AppServiceProvider
 
 contoh di file :
 RawSqlTest.php
+laravel.log
