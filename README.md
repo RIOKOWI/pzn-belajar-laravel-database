@@ -87,3 +87,7 @@ laravel.log
 
 contoh di file :
 TransactionTest.php
+
+## DATABASE COMMANDS
+
+tidak bisa di windows hanya bisa di mac/linux
