@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Database\QueryException;
 use Tests\TestCase;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -14,7 +15,7 @@ class TransactionTest extends TestCase
     protected function setup(): void
     {
         parent::setUp();
-        DB::delete('delet from categories');
+        DB::delete('delete from categories');
     }
 
     // skenario sukses
@@ -37,5 +38,23 @@ class TransactionTest extends TestCase
 
         $result = DB::select('select * from categories');
         assertEquals(2, count($result));
+    }
+
+    // skenario gagal
+    public function testTransactionFailed()
+    {
+
+        try{
+            DB::transaction(function(){
+                DB::insert('INSERT INTO categories(id, name, description, created_at) VALUES(?, ?, ? , ?)', ['GADGET', 'Hp', 'Flagship', '2022-01-01 00:00:00']);
+                DB::insert('INSERT INTO categories(id, name, description, created_at) VALUES(?, ?, ? , ?)', ['GADGET', 'Hp', 'Flagship', '2022-01-01 00:00:00']);
+            }, 2);
+        }
+        catch(QueryException $error){
+            // excpected
+        }
+
+        $result = DB::select('select * from categories');
+        self::assertEquals(0, count($result));
     }
 }
