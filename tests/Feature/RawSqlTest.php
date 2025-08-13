@@ -30,6 +30,7 @@ class RawSqlTest extends TestCase
         assertEquals('2022-01-01 00:00:00', $result[0]->created_at);
     }
 
+    //NAMED BINDING
     public function testNamedBinding(): void
     {
         DB::insert('INSERT INTO categories(id, name, description, created_at) VALUES(:id, :name, :description, :created_at)', [
@@ -38,15 +39,13 @@ class RawSqlTest extends TestCase
             'description' => 'Flagship',
             'created_at' => '2022-01-01 00:00:00'
         ]);
-
+        
         $results = DB::select('SELECT * FROM categories WHERE id = :id', ['id' => 'GADGET']);
-
+        
         assertEquals(1, count($results));
         assertEquals('GADGET', $results[0]->id);
         assertEquals('Hp', $results[0]->name);
         assertEquals('Flagship', $results[0]->description);
         assertEquals('2022-01-01 00:00:00', $results[0]->created_at);
     }
-
-
 }
