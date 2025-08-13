@@ -76,4 +76,20 @@ class TransactionTest extends TestCase
         $result = DB::select('select * from categories');
         assertEquals(2, count($result));
     }
+    public function testManualTransactionFailed(): void
+    {
+        try{
+            DB::beginTransaction();
+            DB::insert('INSERT INTO categories(id, name, description, created_at) VALUES(?, ?, ? , ?)', ['GADGET', 'Hp', 'Flagship', '2022-01-01 00:00:00']);
+            DB::insert('INSERT INTO categories(id, name, description, created_at) VALUES(?, ?, ? , ?)', ['GADGET', 'Hp', 'Flagship', '2022-01-01 00:00:00']);
+            DB::commit();
+        } 
+        catch(QueryException $error)
+        {
+            DB::rollBack();
+        }
+
+        $result = DB::select('select * from categories');
+        assertEquals(0, count($result));
+    }
 }
