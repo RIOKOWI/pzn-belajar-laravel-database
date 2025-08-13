@@ -76,3 +76,8 @@ database.sql
 
 contoh di file :
 AppServiceProvider
+
+## CRUD SQL
+
+contoh di file :
+RawSqlTest.php
