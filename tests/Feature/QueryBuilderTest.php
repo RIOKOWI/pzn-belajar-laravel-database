@@ -82,9 +82,21 @@ class QueryBuilderTest extends TestCase
         })->get();
 
         self::assertCount(2, $collection);
-
         $collection->each(function($item){
             Log::info(json_encode($item));
         });
     }
+    
+    public function testWhereBetween(): void
+    {
+        $this->testInsertWhere();
+        
+        $collection = DB::table('categories')->whereBetween('created_at', ['2021-01-01 00:00:00','2022-02-01 00:00:00'])->get();
+
+        self::assertCount(4, $collection);
+        $collection->each(function($item){
+            Log::info(json_encode($item));
+        });
+    }
+    
 }
