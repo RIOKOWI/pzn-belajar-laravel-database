@@ -97,3 +97,9 @@ tidak bisa di windows hanya bisa di mac/linux
 ## QUERY BUILDER INSERT
 
 contoh di file :
+QueryBuilderTest.php
+
+## QUERY BUILDER SELECT
+
+contoh di file :
+QueryBuilderTest.php
