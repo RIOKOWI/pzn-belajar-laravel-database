@@ -2,12 +2,15 @@
 
 namespace Tests\Feature;
 
+use Hamcrest\Description;
 use Tests\TestCase;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+
+use function Laravel\Prompts\table;
 
 class QueryBuilderTest extends TestCase
 {
@@ -156,6 +159,25 @@ class QueryBuilderTest extends TestCase
         });
     }
 
-    
+    // update or insert
+    public function testUpdateOrInsert(): void
+    {
+        $this->testInsertWhere();
+        DB::table('categories')->updateOrInsert([
+            'id' => 'DRINK'
+        ],
+        [
+            'name' => 'Coca-Cola',
+            'description' => 'coke',
+            'created_at' => '2022-01-01 00:00:00',
+        ]);
+
+        $collection = DB::table('categories')->where('id', '=', 'DRINK')->get();
+        self::assertCount(1, $collection);
+
+        $collection->each(function($item){
+            Log::info(json_encode($item));
+        });
+    }
 }
 
