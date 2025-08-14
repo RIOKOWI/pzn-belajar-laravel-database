@@ -17,6 +17,7 @@ class QueryBuilderTest extends TestCase
         DB::delete('delete from categories');
     }
 
+    // insert
     public function testInsert(): void
     {
         DB::table('categories')->insert([
@@ -32,6 +33,7 @@ class QueryBuilderTest extends TestCase
         self::assertEquals(2, $result[0]->total);
     }
 
+    // select
     public function testSelect(): void
     {
         $this->testInsert();
@@ -72,6 +74,7 @@ class QueryBuilderTest extends TestCase
         self::assertEquals(4, $result->count());
     }
 
+    // where orWhere
     public function testOrwhere(): void
     {
         $this->testInsertWhere();
@@ -86,7 +89,8 @@ class QueryBuilderTest extends TestCase
             Log::info(json_encode($item));
         });
     }
-    
+
+    // whereBetween
     public function testWhereBetween(): void
     {
         $this->testInsertWhere();
@@ -94,6 +98,19 @@ class QueryBuilderTest extends TestCase
         $collection = DB::table('categories')->whereBetween('created_at', ['2021-01-01 00:00:00','2022-02-01 00:00:00'])->get();
 
         self::assertCount(4, $collection);
+        $collection->each(function($item){
+            Log::info(json_encode($item));
+        });
+    }
+
+    // whereIn
+    public function testWhereIn(): void
+    {
+        $this->testInsertWhere();
+        
+        $collection = DB::table('categories')->whereIn('id', ['MOTO','CARS'])->get();
+
+        self::assertCount(2, $collection);
         $collection->each(function($item){
             Log::info(json_encode($item));
         });
