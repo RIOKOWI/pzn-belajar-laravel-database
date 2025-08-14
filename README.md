@@ -91,3 +91,9 @@ TransactionTest.php
 ## DATABASE COMMANDS
 
 tidak bisa di windows hanya bisa di mac/linux
+
+## QUERY BUILDER
+
+## QUERY BUILDER INSERT
+
+contoh di file :
