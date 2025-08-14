@@ -10,3 +10,14 @@ CREATE TABLE categories (
 ) engine innodb;
 
 desc categories;
+
+
+-- COUNTER
+CREATE TABLE counters (
+    id      VARCHAR(100) NOT NULL PRIMARY KEY,
+    counter int NOT NULL DEFAULT 0
+) ENGINE innodb;
+
+insert into counters(id, counter) VALUES('sample', 0);
+
+select * from counters;
