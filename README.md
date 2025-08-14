@@ -103,5 +103,10 @@ QueryBuilderTest.php
 
 contoh di file :
 QueryBuilderTest.php
+laravel.log
 
 ## QUERY BUILDER WHERE
+
+contoh di file :
+QueryBuilderTest.php
+laravel.log
