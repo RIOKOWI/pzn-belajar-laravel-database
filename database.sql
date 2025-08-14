@@ -9,6 +9,7 @@ CREATE TABLE categories (
     created_at TIMESTAMP
 ) engine innodb;
 
+select * from categories;
 desc categories;
 
 

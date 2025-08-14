@@ -191,5 +191,18 @@ class QueryBuilderTest extends TestCase
             Log::info(json_encode($item));
         });
     }
+
+    // trunket() = hapus tabel dan buat ulang
+    // delete()
+    public function testDelete(): void
+    {
+        $this->testInsertWhere();
+
+        DB::table('categories')->where('id', '=', 'DRINK')->delete();
+        $collection = DB::table('categories')->where('id', '=', 'DRINK')->get();
+
+        self::assertCount(0, $collection);
+
+    }
 }
 

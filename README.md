@@ -116,3 +116,9 @@ laravel.log
 contoh di file :
 QueryBuilderTest.php
 laravel.log
+
+## QUERY BUILDER DELETE
+
+contoh di file :
+QueryBuilderTest.php
+laravel.log
