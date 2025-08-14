@@ -128,4 +128,16 @@ class QueryBuilderTest extends TestCase
             Log::info(json_encode($item));
         });
     }
+
+    // whereDate
+    public function testWhereDate(): void
+    {
+        $this->testInsertWhere();
+
+        $collection = DB::table('categories')->whereDate('created_at', '2022-01-01 00:00:00')->get();
+        self::assertCount(4, $collection);
+        $collection->each(function($item){
+            Log::info(json_encode($item));
+        });
+    }
 }
