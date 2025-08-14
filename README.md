@@ -103,3 +103,5 @@ QueryBuilderTest.php
 
 contoh di file :
 QueryBuilderTest.php
+
+## QUERY BUILDER WHERE
