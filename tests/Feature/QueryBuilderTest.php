@@ -140,4 +140,22 @@ class QueryBuilderTest extends TestCase
             Log::info(json_encode($item));
         });
     }
+
+    // update()
+    public function testUpdate(): void
+    {
+        $this->testInsertWhere();
+
+        DB::table('categories')->where('id', '=', 'MOTO')->update(['name' => 'Honda']);
+
+        $collection = DB::table('categories')->where('name', '=', 'Honda')->get();
+        self::assertCount(1, $collection);
+
+        $collection->each(function($item){
+            Log::info(json_encode($item));
+        });
+    }
+
+    
 }
+

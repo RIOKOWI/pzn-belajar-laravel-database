@@ -110,3 +110,9 @@ laravel.log
 contoh di file :
 QueryBuilderTest.php
 laravel.log
+
+## QUERY BUILDER UPDATE
+
+contoh di file :
+QueryBuilderTest.php
+laravel.log
