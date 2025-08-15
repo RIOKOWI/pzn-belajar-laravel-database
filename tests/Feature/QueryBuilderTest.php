@@ -334,5 +334,31 @@ class QueryBuilderTest extends TestCase
             Log::info(json_encode($category));
         });
     }
+    
+    // query builder aggregate
+    public function testAggregate(): void
+    {
+        $this->testInsertProducts();
+        
+        //hitung data
+        $count = DB::table('products')->count('id');
+        self::assertEquals(2, $count);
+        
+        // harga paling tinggi
+        $max = DB::table('products')->max('price');
+        self::assertEquals(25000000, $max);
+        
+        // harga paling rendah
+        $min = DB::table('products')->min('price');
+        self::assertEquals(20000000, $min);
+        
+        // harga rata rata
+        $avg = DB::table('products')->avg('price');
+        self::assertEquals(22500000, $avg);
+        
+        // total harga 
+        $sum = DB::table('products')->sum('price');
+        self::assertEquals(45000000, $sum);
+    }
 }
 

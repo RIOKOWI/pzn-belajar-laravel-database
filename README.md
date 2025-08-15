@@ -160,5 +160,10 @@ contoh di file :
 QueryBuilderTest.php
 laravel.log
 
+## QUERY BUILDER AGGREGATE
+
+contoh di file :
+QueryBuilderTest.php
+laravel.log
 
 
