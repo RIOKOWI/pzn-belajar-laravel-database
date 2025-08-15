@@ -220,11 +220,12 @@ class QueryBuilderTest extends TestCase
         ]);
         DB::table('products')->insert([
             'id' => '2',
-            'name' => 'Nuvo',
-            'description' => 'Matic',
+            'name' => 'Iphone 15 Pro Max',
+            'description' => 'Apple',
             'price' => 20000000,
-            'category_id' => 'MOTO'
+            'category_id' => 'PHONE'
         ]);
+        
     }
     
     // test join
@@ -376,6 +377,44 @@ class QueryBuilderTest extends TestCase
         self::assertEquals(2, $collection[0]->total_product);
         self::assertEquals(20000000, $collection[0]->min_product);
         self::assertEquals(25000000, $collection[0]->max_product);
+    }
+
+    public function testInsertProductsFood(): void
+    {
+        
+        $this->testInsertProducts();
+        DB::table('products')->insert([
+            'id' => '3',
+            'name' => 'Coto Betawi',
+            'description' => 'Soto dari Betawi',
+            'price' => 15000,
+            'category_id' => 'FOOD'
+        ]);
+        DB::table('products')->insert([
+            'id' => '4',
+            'name' => 'Gultik',
+            'description' => 'Gulai Tikungan',
+            'price' => 20000,
+            'category_id' => 'FOOD'
+        ]);
+    }
+
+    // groupping
+    public function testGroupBy(): void
+    {
+        $this->testInsertProductsFood();
+
+        $collection = DB::table('products')
+        ->select('category_id', DB::raw('count(*) as total_product'))
+        ->groupBy('category_id')
+        ->orderBy('category_id', 'desc')
+        ->get();
+
+        self::assertCount(2, $collection);
+        self::assertEquals('PHONE', $collection[0]->category_id);
+        self::assertEquals('FOOD', $collection[1]->category_id);
+        self::assertEquals('2', $collection[0]->total_product);
+        self::assertEquals('2', $collection[1]->total_product);
     }
 }
 
