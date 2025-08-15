@@ -305,5 +305,20 @@ class QueryBuilderTest extends TestCase
             Log::info('end chunk');
         });
     }
+
+    //LAZY RESULTS
+    public function testLazyResults(): void
+    {
+        $this->insertManyCategories();
+
+        DB::table('categories')
+        ->orderBy('id')
+        ->lazy(10)
+        ->take(3)
+        ->each(function($category){
+            self::assertNotNull($category);
+            Log::info(json_encode($category));
+        });
+    }
 }
 

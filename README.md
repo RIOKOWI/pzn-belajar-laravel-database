@@ -148,5 +148,11 @@ contoh di file :
 QueryBuilderTest.php
 laravel.log
 
+## LAZY RESULTS
+
+contoh di file :
+QueryBuilderTest.php
+laravel.log
+
 
 
