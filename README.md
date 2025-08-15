@@ -133,5 +133,13 @@ database.sql
 ## QUERY BUILDER ORDERING
 
 contoh di file :
+QueryBuilderTest.php
+laravel.log
+
+## QUERY BUILDER PAGING
+
+contoh di file :
+QueryBuilderTest.php
+laravel.log
 
 
