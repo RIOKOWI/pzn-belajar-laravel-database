@@ -126,5 +126,12 @@ laravel.log
 ## QUERY BUILDER JOIN
 
 contoh di file :
+QueryBuilderTest.php
+laravel.log
 database.sql
+
+## QUERY BUILDER ORDERING
+
+contoh di file :
+
 
