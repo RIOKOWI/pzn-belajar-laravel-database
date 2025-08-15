@@ -416,5 +416,20 @@ class QueryBuilderTest extends TestCase
         self::assertEquals('2', $collection[0]->total_product);
         self::assertEquals('2', $collection[1]->total_product);
     }
+
+    // having
+    public function testGroupingHaving(): void
+    {
+        $this->testInsertProductsFood();
+
+        $collection = DB::table('products')
+        ->select('category_id', DB::raw('count(*) as total_product'))
+        ->groupBy('category_id')
+        ->orderBy('category_id', 'desc')
+        ->having(DB::raw('count(*)'), '>', 2)
+        ->get();
+
+        self::assertCount(0, $collection);
+    }
 }
 
