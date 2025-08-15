@@ -142,4 +142,11 @@ contoh di file :
 QueryBuilderTest.php
 laravel.log
 
+## CHUNK RESULTS
+
+contoh di file :
+QueryBuilderTest.php
+laravel.log
+
+
 
