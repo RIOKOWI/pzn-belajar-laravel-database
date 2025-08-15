@@ -122,3 +122,9 @@ laravel.log
 contoh di file :
 QueryBuilderTest.php
 laravel.log
+
+## QUERY BUILDER JOIN
+
+contoh di file :
+database.sql
+

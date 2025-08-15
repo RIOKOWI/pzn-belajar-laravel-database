@@ -17,6 +17,7 @@ class QueryBuilderTest extends TestCase
     protected function setup(): void
     {
         parent::setUp();
+        DB::delete('delete from products');
         DB::delete('delete from categories');
     }
 
@@ -191,18 +192,56 @@ class QueryBuilderTest extends TestCase
             Log::info(json_encode($item));
         });
     }
-
+    
     // trunket() = hapus tabel dan buat ulang
     // delete()
     public function testDelete(): void
     {
         $this->testInsertWhere();
-
+        
         DB::table('categories')->where('id', '=', 'DRINK')->delete();
         $collection = DB::table('categories')->where('id', '=', 'DRINK')->get();
-
+        
         self::assertCount(0, $collection);
 
+    }
+
+    // insert product
+    public function testInsertProducts(): void
+    {
+        $this->testInsertWhere();
+
+        DB::table('products')->insert([
+            'id' => '1',
+            'name' => 'Samsung S25U',
+            'description' => 'Powerful smartphone',
+            'price' => 25000000,
+            'category_id' => 'PHONE'
+        ]);
+        DB::table('products')->insert([
+            'id' => '2',
+            'name' => 'Nuvo',
+            'description' => 'Matic',
+            'price' => 20000000,
+            'category_id' => 'MOTO'
+        ]);
+    }
+    
+    // test join
+    public function testJoin(): void
+    {
+        $this->testInsertProducts();
+        
+        $collection = DB::table('products')
+        ->join('categories', 'products.category_id', '=', 'categories.id')
+        ->select('products.id', 'products.name', 'categories.name as category_name', 'products.price')
+        ->get();
+        
+        self::assertCount(2, $collection);
+        $collection->each(function($item){
+            Log::info(json_encode($item));
+        });
+        
     }
 }
 
