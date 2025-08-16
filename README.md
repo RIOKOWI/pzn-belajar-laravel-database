@@ -201,3 +201,7 @@ laravel.log
 contoh di file :
 QueryBuilderTest.php
 laravel.log
+
+## MEMBUAT DATABASE MIGRATION
+
+php artisan make:migration nama_migration
