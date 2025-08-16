@@ -203,5 +203,11 @@ QueryBuilderTest.php
 laravel.log
 
 ## MEMBUAT DATABASE MIGRATION
-
+buat migration :
 php artisan make:migration nama_migration
+
+melihat migration :
+php artisan migrate:status
+
+menjalankan migration :
+php artisan migrate

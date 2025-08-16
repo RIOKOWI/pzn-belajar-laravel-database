@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table_counter', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('counters', function (Blueprint $table) {
+            $table->string('id', 100)->nullable(false)->primary();
+            $table->string('counter')->nullable(false)->default(0);
         });
     }
 
@@ -22,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table_counter');
+        Schema::dropIfExists('counters');
     }
 };

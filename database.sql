@@ -39,3 +39,5 @@ CREATE TABLE products (
 DROP Table products;
 DROP Table categories;
 DROP Table counters;
+
+DROP DATABASE belajar_laravel_database;
