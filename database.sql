@@ -36,3 +36,6 @@ CREATE TABLE products (
     constraint fk_category_id FOREIGN KEY (category_id) REFERENCES categories(id)
 ) engine innodb;
 
+DROP Table products;
+DROP Table categories;
+DROP Table counters;

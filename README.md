@@ -195,3 +195,9 @@ laravel.log
 contoh di file :
 QueryBuilderTest.php
 laravel.log
+
+## DATABASE MIGRATION
+
+contoh di file :
+QueryBuilderTest.php
+laravel.log
