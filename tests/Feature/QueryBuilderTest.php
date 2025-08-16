@@ -465,5 +465,26 @@ class QueryBuilderTest extends TestCase
             Log::info(json_encode($item));
         };
     }
+
+    //iterasi per page
+
+    public function testIterasiPerPage()
+    {
+        $this->insertManyCategories();
+
+        $page = 1;
+        while (true) {
+            $paginate = DB::table('categories')->paginate(perPage: 2, page: $page);
+            if ($paginate->isEmpty()){
+                break;
+            } else{
+                $page++;
+                foreach($paginate->items() as $item){
+                    self::assertNotNull($item);
+                    Log::info(json_encode($item));
+                };
+            }
+        }
+    }
 }
 
