@@ -178,3 +178,8 @@ contoh di file :
 QueryBuilderTest.php
 laravel.log
 
+## QUERY BUILDER LOCKING
+
+contoh di file :
+QueryBuilderTest.php
+laravel.log
