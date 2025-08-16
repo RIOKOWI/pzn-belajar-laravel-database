@@ -285,7 +285,7 @@ class QueryBuilderTest extends TestCase
     {
         for ($i = 0; $i < 100; $i++){
             DB::table('categories')->insert([
-                'id' => "CATEGORY-$i",
+                'id' => "CATEGORY- $i",
                 'name' => "Category $i",
                 'created_at' => "2022-01-01 00:00:00"
             ]);
@@ -483,6 +483,27 @@ class QueryBuilderTest extends TestCase
                     self::assertNotNull($item);
                     Log::info(json_encode($item));
                 };
+            }
+        }
+    }
+
+    // cursor pagination
+    public function testCursorPagination()
+    {
+        $this->insertManyCategories();
+
+        $cursor = null;
+        while(true) {
+            $paginate = DB::table('categories') ->orderBy('id')->cursorPaginate(perPage: 2, cursor: $cursor);
+    
+            foreach($paginate->items() as $item){
+                self::assertNotNull($item);
+                Log::info(json_encode($item));
+            }
+    
+            $cursor = $paginate->nextCursor();
+            if ($cursor == null){
+                break;
             }
         }
     }
