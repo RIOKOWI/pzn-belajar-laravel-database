@@ -11,6 +11,8 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use function Laravel\Prompts\table;
+use function PHPUnit\Framework\assertCount;
+use function PHPUnit\Framework\assertEquals;
 
 class QueryBuilderTest extends TestCase
 {
@@ -443,6 +445,25 @@ class QueryBuilderTest extends TestCase
         ->get();
 
         self::assertCount(1, $collection);
+    }
+
+    // pagination
+    public function testPagination()
+    {
+        $this->testInsertWhere();
+
+        $paginate = DB::table('categories')->paginate(perPage: 2, page: 1);
+
+        assertEquals(1, $paginate->currentPage());
+        assertEquals(2, $paginate->perPage());
+        assertEquals(2, $paginate->lastPage());
+        assertEquals(4, $paginate->total());
+
+        $collection = $paginate->items();
+        assertCount(2, $collection);
+        foreach ($collection as $item) {
+            Log::info(json_encode($item));
+        };
     }
 }
 

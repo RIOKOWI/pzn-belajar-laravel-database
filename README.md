@@ -183,3 +183,9 @@ laravel.log
 contoh di file :
 QueryBuilderTest.php
 laravel.log
+
+## PAGINATION
+
+contoh di file :
+QueryBuilderTest.php
+laravel.log
