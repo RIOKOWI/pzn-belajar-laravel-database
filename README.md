@@ -211,3 +211,16 @@ php artisan migrate:status
 
 menjalankan migration :
 php artisan migrate
+
+contoh di file :
+2025_08_16_121130_create_table_counter.php
+2025_08_16_121156_create_table_category.php
+2025_08_16_130151_create_table_product.php
+2025_08_16_131833_add_column_to_counters.php
+
+
+## ROLLBACK DATABASE MIGRATION
+
+perintah rollback :
+php artisan migrate:rollback --step=jumlah
+php artisan migrate:rollback --step=1
