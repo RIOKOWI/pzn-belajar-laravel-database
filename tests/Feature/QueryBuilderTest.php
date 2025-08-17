@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use Database\Seeders\CategorySeeder;
+use Database\Seeders\CounterSeeder;
 use Hamcrest\Description;
 use Tests\TestCase;
 use Illuminate\Support\Facades\DB;
@@ -19,6 +21,7 @@ class QueryBuilderTest extends TestCase
     protected function setup(): void
     {
         parent::setUp();
+        DB::delete('delete from counters');
         DB::delete('delete from products');
         DB::delete('delete from categories');
     }
@@ -55,27 +58,7 @@ class QueryBuilderTest extends TestCase
 
     public function testInsertWhere(): void
     {
-        DB::table('categories')->insert([
-            'id' => 'PHONE',
-            'name' => 'Samsung',
-            'created_at' => '2022-01-01 00:00:00'
-        ]);
-        DB::table('categories')->insert([
-            'id' => 'CARS',
-            'name' => 'Hyundai',
-            'created_at' => '2022-01-01 00:00:00'
-        ]);
-        DB::table('categories')->insert([
-            'id' => 'MOTO',
-            'name' => 'Suzuki',
-            'created_at' => '2022-01-01 00:00:00'
-        ]);
-        DB::table('categories')->insert([
-            'id' => 'FOOD',
-            'name' => 'Rawon',
-            'created_at' => '2022-01-01 00:00:00'
-        ]);
-
+        $this->seed(CategorySeeder::class);
         $result = DB::table('categories')->select(['id','name','created_at'])->get();
         self::assertEquals(4, $result->count());
     }
@@ -186,6 +169,8 @@ class QueryBuilderTest extends TestCase
     // incremente & decrement
     public function testIncrement(): void
     {
+        $this->seed(CounterSeeder::class);
+
         DB::table('counters')->where('id', '=', 'sample')->increment('counter', 1);
         
         $collection = DB::table('counters')->where('id', '=', 'sample')->get();
@@ -506,6 +491,20 @@ class QueryBuilderTest extends TestCase
                 break;
             }
         }
+    }
+
+    // panggil seeder
+    public function testSeeding() 
+    {
+        $this->testInsertWhere();
+
+        $collection = DB::table('categories')->get();
+        self::assertCount(4, $collection);
+
+        foreach($collection as $item){
+            self::assertNotNull($item);
+            Log::info(json_encode($item));
+        };
     }
 }
 
