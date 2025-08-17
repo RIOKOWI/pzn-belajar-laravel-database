@@ -224,3 +224,14 @@ contoh di file :
 perintah rollback :
 php artisan migrate:rollback --step=jumlah
 php artisan migrate:rollback --step=1
+
+## DATABASE SEEDING
+
+membuat seeding :
+php artisan make:seeder NamaSeeder
+
+contoh di file :
+CategorySeeder.php
+
+menjalankan seeder : 
+php artisan db:seed --class=NamaSeeder
