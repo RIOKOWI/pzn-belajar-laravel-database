@@ -232,6 +232,8 @@ php artisan make:seeder NamaSeeder
 
 contoh di file :
 CategorySeeder.php
+CounterSeeder.php
+QueryBuilderTest.php
 
 menjalankan seeder : 
 php artisan db:seed --class=NamaSeeder
