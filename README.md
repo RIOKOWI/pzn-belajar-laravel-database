@@ -65,6 +65,14 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
+## ###############################################################################################
+
+## SLIDE
+https://docs.google.com/presentation/d/1bCGVZQWLrHHSjoqSitp9Vxq0enHNoQIjR6WoGsSofXw/edit?slide=id.p#slide=id.p
+
+## SOURCE CODE
+https://github.com/ProgrammerZamanNow/belajar-laravel-database
+
 
 ## KONFIGURASI DATABASE
 
@@ -99,11 +107,15 @@ tidak bisa di windows hanya bisa di mac/linux
 contoh di file :
 QueryBuilderTest.php
 
+LINE 29-43
+
 ## QUERY BUILDER SELECT
 
 contoh di file :
-QueryBuilderTest.php
 laravel.log
+QueryBuilderTest.php
+
+LINE 45-55
 
 ## QUERY BUILDER WHERE
 
@@ -111,96 +123,128 @@ contoh di file :
 QueryBuilderTest.php
 laravel.log
 
+LINE 66-131
+
 ## QUERY BUILDER UPDATE
 
 contoh di file :
-QueryBuilderTest.php
 laravel.log
+QueryBuilderTest.php
+
+LINE 133-181
 
 ## QUERY BUILDER DELETE
 
 contoh di file :
-QueryBuilderTest.php
 laravel.log
+QueryBuilderTest.php
+
+LINE 183-194
 
 ## QUERY BUILDER JOIN
 
 contoh di file :
-QueryBuilderTest.php
 laravel.log
 database.sql
+QueryBuilderTest.php
+
+LINE 218-233
 
 ## QUERY BUILDER ORDERING
 
 contoh di file :
-QueryBuilderTest.php
 laravel.log
+QueryBuilderTest.php
+
+LINE 235-250
 
 ## QUERY BUILDER PAGING
 
 contoh di file :
-QueryBuilderTest.php
 laravel.log
+QueryBuilderTest.php
+
+LINE 252-278
 
 ## CHUNK RESULTS
 
 contoh di file :
-QueryBuilderTest.php
 laravel.log
+QueryBuilderTest.php
+
+LINE 280-295
 
 ## LAZY RESULTS
 
 contoh di file :
-QueryBuilderTest.php
 laravel.log
+QueryBuilderTest.php
+
+LINE 297-310
 
 ## CURSOR
 
 contoh di file :
-QueryBuilderTest.php
 laravel.log
+QueryBuilderTest.php
+
+LINE 312-324
 
 ## QUERY BUILDER AGGREGATE
 
 contoh di file :
-QueryBuilderTest.php
 laravel.log
+QueryBuilderTest.php
+
+LINE 326-350
 
 ## QUERY BUILDER RAW
 
 contoh di file :
-QueryBuilderTest.php
 laravel.log
+QueryBuilderTest.php
+
+LINE 352-387
 
 ## QUERY BUILDER GROUPPING
 
 contoh di file :
-QueryBuilderTest.php
 laravel.log
+QueryBuilderTest.php
+
+LINE 389-420
 
 ## QUERY BUILDER LOCKING
 
 contoh di file :
-QueryBuilderTest.php
 laravel.log
+QueryBuilderTest.php
+
+LINE 422-433
 
 ## PAGINATION
 
 contoh di file :
-QueryBuilderTest.php
 laravel.log
+QueryBuilderTest.php
+
+LINE 435-473
 
 ## CURSOR PAGINATION
 
 contoh di file :
-QueryBuilderTest.php
 laravel.log
+QueryBuilderTest.php
+
+LINE 475-494
 
 ## DATABASE MIGRATION
 
 contoh di file :
 QueryBuilderTest.php
 laravel.log
+
+LINE 
 
 ## MEMBUAT DATABASE MIGRATION
 buat migration :
@@ -234,6 +278,8 @@ contoh di file :
 CategorySeeder.php
 CounterSeeder.php
 QueryBuilderTest.php
+
+LINE 496
 
 menjalankan seeder : 
 php artisan db:seed --class=NamaSeeder
